@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BUP DASHBOARD</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container mt-5">
+    <h1 class="mb-4">Edit Link</h1>
+    <form th:action="@{/links/{id}/edit(id=${link.id})}" th:object="${link}" method="post">
+        <div class="form-group">
+            <label for="name">Link Name</label>
+            <input type="text" id="name" name="name" th:field="*{name}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="url">Link URL</label>
+            <input type="text" id="url" name="url" th:field="*{url}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="categories">Categories</label>
+            <select id="categories" name="categoryIds" class="form-control" multiple>
+                <option th:each="category : ${categories}"
+                        th:value="${category.id}"
+                        th:text="${category.name}"
+                        th:selected="${link.categories.contains(category)}">
+                </option>
+            </select>
+        </div>
+        <br> <br>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        &nbsp; &nbsp;
+        <a th:href="@{/links}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

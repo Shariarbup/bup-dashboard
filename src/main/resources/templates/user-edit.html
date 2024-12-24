@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>BUP DASHBOARD</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+  <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container mt-5">
+  <h2 class="text-center">Edit User</h2>
+  <form th:action="@{|/users/${user.id}/edit|}" th:object="${user}" method="post">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input type="text" th:field="*{firstName}" class="form-control" id="firstName" placeholder="Enter First Name" required>
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input type="text" th:field="*{lastName}" class="form-control" id="lastName" placeholder="Enter Last Name" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Enter email" required>
+    </div>
+    <div class="mb-3">
+      <label for="roles" class="form-label">Roles</label>
+      <select th:field="*{roles}" class="form-select" id="roles" multiple>
+        <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a th:href="@{/users}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+</body>
+</html>

@@ -32,7 +32,7 @@ public class Link {
 
     @ManyToMany(mappedBy="links")
     @JsonBackReference
-    private List<Category> categories =new ArrayList<>();
+    private Set<Category> categories =new HashSet<>();
 
     public void addCategory(Category category) {
         if (category != null && !this.categories.contains(category)) {

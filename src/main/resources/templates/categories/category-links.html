@@ -11,15 +11,19 @@
 <div th:replace="fragments/header :: header"></div>
 <div class="container">
     <h1 class="text-center">Links in Category: <span th:text="${category.name}"></span></h1>
-    <table class="table">
-        <thead>
+    <table class="table table-bordered text-light">
+        <thead class="table-light">
         <tr>
+            <th>ID</th>
             <th>Link Name</th>
+            <th>URL</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="link : ${links}">
+            <td th:text="${link.id}"></td>
             <td th:text="${link.name}"></td>
+            <td th:text="${link.url}"></td>
         </tr>
         </tbody>
     </table>

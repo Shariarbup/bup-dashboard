@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,5 +23,14 @@ public class DashboardController {
         List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("categories", categories);
         return "dashboard/bup-dashboard";
+    }
+
+    @GetMapping("/search")
+    public String searchLinks(@RequestParam("query") String query, Model model) {
+        // Fetch categories and filter links based on the search query
+        List<Category> categories = categoryService.getAllCategoriesWithFilteredLinks(query);
+        model.addAttribute("categories", categories);
+        model.addAttribute("query", query); // Add query to the model
+        return "dashboard/bup-dashboard"; // Thymeleaf template name
     }
 }

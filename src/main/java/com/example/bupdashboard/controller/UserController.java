@@ -81,4 +81,20 @@ public class UserController {
         userService.saveUser(userDto);
         return "redirect:/register?success";
     }
+
+    @GetMapping("/users/{id}/edit")
+    public String showEditForm(@PathVariable("id") Long id, Model model) {
+        User user = userService.getUserById(id);
+        List<Role> roles = roleRepository.findAll(); // Fetch all roles
+        model.addAttribute("user", user);
+        model.addAttribute("roles", roles);
+        return "user-edit";
+    }
+
+    @PostMapping("/users/{id}/edit")
+    public String updateUser(@PathVariable("id") Long id, @ModelAttribute("user") User user, RedirectAttributes redirectAttributes) {
+        userService.updateUser(id, user);
+        redirectAttributes.addFlashAttribute("successMessage", "User updated successfully!");
+        return "redirect:/users";
+    }
 }

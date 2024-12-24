@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class LinkServiceImpl implements LinkService {
@@ -25,13 +24,9 @@ public class LinkServiceImpl implements LinkService {
     @Override
     public Link saveLink(Link link, List<Long> categoryIds) {
         List<Category> categories = categoryRepository.findAllById(categoryIds);
-//        link.setCategories(categories);
         for (Category category : categories) {
             link.addCategory(category);
         }
-
-        // Save the entities
-//        categoryRepository.saveAll(categories);
         return linkRepository.save(link);
     }
 
@@ -40,7 +35,7 @@ public class LinkServiceImpl implements LinkService {
         Link link = new Link();
         link.setName(linkDto.getName());
         link.setUrl(linkDto.getUrl());
-        link.setCategories(linkDto.getCategories());
+//        link.setCategories(linkDto.getCategories());
         System.out.println("link c"+ linkDto.getCategories());
         linkRepository.save(link);
     }
@@ -48,5 +43,30 @@ public class LinkServiceImpl implements LinkService {
     @Override
     public List<Link> getAllLinks() {
         return linkRepository.findAll();
+    }
+
+    @Override
+    public Link findCategoryById(Long id) {
+        return findById(id);
+    }
+
+    public Link findById(Long id) {
+        return linkRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Link not found with id: " + id));
+    }
+
+    @Override
+    public void updateLink(Long id, Link updatedLink, List<Long> categoryIds) {
+        Link existingLink = findById(id);
+        existingLink.setName(updatedLink.getName());
+        existingLink.setUrl(updatedLink.getUrl());
+
+        // Update categories
+        List<Category> categories = categoryRepository.findAllById(categoryIds);
+        for (Category category : categories) {
+            existingLink.addCategory(category);
+        }
+
+        linkRepository.save(existingLink);
     }
 }

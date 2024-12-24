@@ -19,6 +19,7 @@
             <th>Name</th>
             <th>URL</th>
             <th>Categories</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -27,7 +28,10 @@
             <td th:text="${link.name}"></td>
             <td th:text="${link.url}"></td>
             <td>
-                <span th:each="category : ${link.categories}" th:text="${category.name} + ' '" class="badge bg-secondary"></span>
+                <span th:style="'margin-right: 2px;'" th:each="category : ${link.categories}" th:text="${category.name}" class="badge bg-secondary"></span>
+            </td>
+            <td>
+                <a th:href="@{/links/{id}/edit(id=${link.id})}" class="btn btn-warning btn-sm">Edit</a>
             </td>
         </tr>
         </tbody>

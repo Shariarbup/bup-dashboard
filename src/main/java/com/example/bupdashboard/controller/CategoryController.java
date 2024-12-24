@@ -65,4 +65,17 @@ public class CategoryController {
         }
         return "categories/category-links"; // Return the name of the view to show the links
     }
+
+    @GetMapping("/{id}/edit")
+    public String showEditCategoryForm(@PathVariable Long id, Model model) {
+        Category category = categoryService.findById(id);
+        model.addAttribute("category", category);
+        return "categories/edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String updateCategory(@PathVariable Long id, @ModelAttribute("category") Category category) {
+        categoryService.updateCategory(id, category);
+        return "redirect:/categories"; // Redirect to the category list page
+    }
 }

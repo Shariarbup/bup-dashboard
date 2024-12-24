@@ -11,4 +11,8 @@ public interface LinkService {
     void saveLinkWithDto(LinkDto linkDto);
 
     List<Link> getAllLinks();
+
+    Link findCategoryById(Long id);
+
+    void updateLink(Long id, Link updatedLink, List<Long> categoryIds);
 }

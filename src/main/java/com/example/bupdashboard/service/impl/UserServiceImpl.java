@@ -30,7 +30,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(UserDto userDto) {
         User user = new User();
-        user.setName(userDto.getFirstName() + " " + userDto.getLastName());
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
         user.setEmail(userDto.getEmail());
         // encrypt the password using spring security
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
@@ -61,12 +62,24 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    public void updateUser(Long id, User updatedUser) {
+        User existingUser = getUserById(id);
+        existingUser.setFirstName(updatedUser.getFirstName());
+        existingUser.setLastName(updatedUser.getLastName());
+        existingUser.setEmail(updatedUser.getEmail());
+        existingUser.setRoles(updatedUser.getRoles());
+        userRepository.save(existingUser);
+    }
+
     private UserDto mapToUserDto(User user){
         UserDto userDto = new UserDto();
-        String[] str = user.getName().split(" ");
         userDto.setId(user.getId());
-        userDto.setFirstName(str[0]);
-        userDto.setLastName(str[1]);
+        userDto.setFirstName(user.getFirstName());
+        userDto.setLastName(user.getLastName());
         userDto.setEmail(user.getEmail());
         userDto.setRoles(user.getRoles());
         return userDto;

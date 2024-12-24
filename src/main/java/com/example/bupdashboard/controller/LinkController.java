@@ -40,4 +40,18 @@ public class LinkController {
         model.addAttribute("links", linkService.getAllLinks());
         return "links/list";
     }
+
+    @GetMapping("/{id}/edit")
+    public String showEditLinkForm(@PathVariable Long id, Model model) {
+        Link link = linkService.findCategoryById(id);
+        model.addAttribute("link", link);
+        model.addAttribute("categories", categoryService.getAllCategories()); // For category dropdown
+        return "links/edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String updateLink(@PathVariable Long id, @ModelAttribute("link") Link updatedLink, @RequestParam("categoryIds") List<Long> categoryIds) {
+        linkService.updateLink(id, updatedLink, categoryIds);
+        return "redirect:/links"; // Redirect to the link list page
+    }
 }

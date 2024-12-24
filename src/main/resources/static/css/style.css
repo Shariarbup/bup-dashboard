@@ -12,12 +12,6 @@ body {
     background-size: cover;
 }
 
-h1 {
-    text-align: center;
-    margin: 2rem 0;
-    font-size: 2.5rem;
-}
-
 .accordion {
     width: 90%;
     margin: 0 auto;
@@ -112,6 +106,10 @@ h1 {
 .accordion-item-header.active + .accordion-item-body {
     /* display: none; */
     max-height: auto;
+}
+
+.search-highlight {
+    background-color: yellow;
 }
 
 @media(max-width: 767px) {

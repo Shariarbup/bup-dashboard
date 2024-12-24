@@ -9,22 +9,24 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 <div class="container">
-    <div class="row col-md-10">
+    <div class="row col-md-10 my-3">
         <h2 class="text-center">List of Registered Users</h2>
     </div>
+    <a class="btn btn-primary mb-3" th:href="@{/register}">Add User</a>
     <table class="table table-bordered text-light">
         <thead class="table-light">
         <tr>
+            <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Roles</th>
             <th>Edit</th>
-            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each = "user : ${users}">
+            <td th:text = "${user.id}"></td>
             <td th:text = "${user.firstName}"></td>
             <td th:text = "${user.lastName}"></td>
             <td th:text = "${user.email}"></td>
@@ -34,52 +36,12 @@
                 </ul>
             </td>
             <td>
-                <a th:href="@{/edit/{id}(id=${user.id})}" class="btn btn-primary edit-btn">Edit</a>
-            </td>
-            <td>
-                <a th:if="${user.id != null}" th:href="@{'/users/delete/' + ${user.id}}" th:userTitle="${user.firstName}" id="btnDelete"
-                   title="Delete this user" class="fa-regular fa-trash-can icon-dark btn-delete">Delete</a>
+                <a th:href="@{|/users/${user.id}/edit|}" class="btn btn-sm btn-warning">Edit</a>
             </td>
         </tr>
         </tbody>
     </table>
-    <button class="btn btn-success" th:href="@{/register/save}">Add User</button>
 </div>
 
-<div class="modal fade text-center" id="confirmModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Delete Confirmation</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <span id="confirmText"></span>
-            </div>
-
-            <div class="modal-footer">
-                <a type="button" id="yesBtn" class="btn btn-danger">Yes</a>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".btn-delete").on("click", function (e) {
-            e.preventDefault();
-            link = $(this);
-
-            userTitle = link.attr("userTitle");
-            $("#yesBtn").attr("href", link.attr("href"));
-            $("#confirmText").html("Do you want to delete the User \<strong\>" + userTitle + "\<\/strong\>?");
-            $("#confirmModal").modal();
-        });
-    });
-</script>
 </body>
 </html>
