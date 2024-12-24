@@ -1,5 +1,6 @@
 package com.example.bupdashboard.controller;
 
+import com.example.bupdashboard.dao.LinkDto;
 import com.example.bupdashboard.entity.Link;
 import com.example.bupdashboard.service.CategoryService;
 import com.example.bupdashboard.service.LinkService;
@@ -30,6 +31,7 @@ public class LinkController {
     public String saveLink(@ModelAttribute("link") Link link, @RequestParam List<Long> categoryIds) {
 
         linkService.saveLink(link, categoryIds);
+//        linkService.saveLinkWithDto(link);
         return "redirect:/links";
     }
 

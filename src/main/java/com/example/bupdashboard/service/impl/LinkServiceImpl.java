@@ -1,5 +1,6 @@
 package com.example.bupdashboard.service.impl;
 
+import com.example.bupdashboard.dao.LinkDto;
 import com.example.bupdashboard.entity.Category;
 import com.example.bupdashboard.entity.Link;
 import com.example.bupdashboard.repository.CategoryRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class LinkServiceImpl implements LinkService {
@@ -23,11 +25,24 @@ public class LinkServiceImpl implements LinkService {
     @Override
     public Link saveLink(Link link, List<Long> categoryIds) {
         List<Category> categories = categoryRepository.findAllById(categoryIds);
+//        link.setCategories(categories);
         for (Category category : categories) {
-            category.addLink(link);
+            link.addCategory(category);
         }
-        categoryRepository.saveAll(categories);
+
+        // Save the entities
+//        categoryRepository.saveAll(categories);
         return linkRepository.save(link);
+    }
+
+    @Override
+    public void saveLinkWithDto(LinkDto linkDto) {
+        Link link = new Link();
+        link.setName(linkDto.getName());
+        link.setUrl(linkDto.getUrl());
+        link.setCategories(linkDto.getCategories());
+        System.out.println("link c"+ linkDto.getCategories());
+        linkRepository.save(link);
     }
 
     @Override

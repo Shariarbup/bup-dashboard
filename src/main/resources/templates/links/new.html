@@ -17,6 +17,10 @@
             <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required>
         </div>
         <div class="mb-3">
+            <label for="url" class="form-label">Link URL</label>
+            <input type="text" class="form-control" id="url" name="url" th:field="*{url}" required>
+        </div>
+        <div class="mb-3">
             <label for="categories" class="form-label">Select Categories</label>
             <select multiple class="form-control" id="categories" name="categoryIds" required>
                 <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>

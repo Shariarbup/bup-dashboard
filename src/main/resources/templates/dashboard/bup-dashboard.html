@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BUP DASHBOARD</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<h1>BUP DASHBOARD</h1>
+
+<div class="accordion">
+    <div th:each="category : ${categories}" class="accordion-item">
+        <div class="accordion-item-header">
+            <!-- Display the category name -->
+            <span th:text="${category.name}"></span>
+        </div>
+        <div class="accordion-item-body">
+            <div class="accordion-item-body-content">
+                <!-- Loop through links associated with this category -->
+                <a th:each="link : ${category.links}"
+                   th:href="@{${link.url}}"
+                   th:text="${link.name}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

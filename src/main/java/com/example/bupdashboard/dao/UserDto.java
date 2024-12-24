@@ -28,12 +28,4 @@ public class UserDto
     @NotEmpty(message = "Password should not be empty")
     private String password;
     private List<Role> roles = new ArrayList<>();
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
