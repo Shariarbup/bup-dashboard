@@ -69,4 +69,9 @@ public class LinkServiceImpl implements LinkService {
 
         linkRepository.save(existingLink);
     }
+
+    @Override
+    public List<Link> fetchLinkByQuery(String query) {
+        return List.of();
+    }
 }

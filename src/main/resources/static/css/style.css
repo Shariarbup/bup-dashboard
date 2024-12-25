@@ -55,8 +55,8 @@ body {
     /* display: block; */
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
-
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
 }
 
 .accordion-item-body-content {
@@ -106,6 +106,7 @@ body {
 .accordion-item-header.active + .accordion-item-body {
     /* display: none; */
     max-height: auto;
+    opacity: 1;
 }
 
 .search-highlight {

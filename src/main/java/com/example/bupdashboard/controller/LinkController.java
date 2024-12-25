@@ -54,4 +54,14 @@ public class LinkController {
         linkService.updateLink(id, updatedLink, categoryIds);
         return "redirect:/links"; // Redirect to the link list page
     }
+
+
+    @GetMapping("/search")
+    public String searchLinks(@RequestParam("query") String query, Model model) {
+        // Fetch categories and filter links based on the search query
+        List<Link> links = linkService.fetchLinkByQuery(query);
+        model.addAttribute("links", links);
+        model.addAttribute("noResults", links.isEmpty()); // Add a flag for empty results
+        return "links/list :: #links-container";
+    }
 }

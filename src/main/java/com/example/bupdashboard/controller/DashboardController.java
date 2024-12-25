@@ -34,10 +34,7 @@ public class DashboardController {
             System.out.println("cat ca"+category.toString());
         });
         model.addAttribute("categories", categories);
-//        model.addAttribute("query", query);
-        // Add query to the model
-//        return "dashboard/bup-dashboard";
-        // Thymeleaf template name
+        model.addAttribute("noResults", categories.isEmpty()); // Add a flag for empty results
         return "dashboard/bup-dashboard :: #accordion-container";
     }
 }

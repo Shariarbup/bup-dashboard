@@ -9,16 +9,13 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
-<!--<div th:style="'width: 90%; margin: 0 auto;'" class="my-2">-->
-<!--    <form th:action="@{/dashboards/search}" method="get" class="d-flex mb-3">-->
-<!--        <input type="text" name="query" class="form-control me-2" placeholder="Search links by name" />-->
-<!--        <button type="submit" class="btn btn-primary">Search</button>-->
-<!--    </form>-->
-<!--</div>-->
 <input type="text" id="search-query" class="form-control my-2"
        th:style="'width: 90%; margin: 0 auto;'" placeholder="Search links..."
        oninput="searchLinks()" />
 <div id="accordion-container" >
+    <div th:if="${noResults}" class="alert alert-warning text-center" th:style="'width: 90%; margin: 0 auto;'">
+        No links found matching your search.
+    </div>
     <div class="accordion">
         <div th:each="category : ${categories}" class="accordion-item">
             <div class="accordion-item-header">
@@ -31,16 +28,11 @@
                     <a th:each="link : ${category.links}"
                        th:href="@{${link.url}}"
                        th:text="${link.name}"></a>
-                    <!--                th:classappend="${query != null and #strings.contains(link.name.toLowerCase(), query.toLowerCase())} ? 'search-highlight' : ''"-->
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!--<div th:if="${#lists.isEmpty(categories)}" class="alert alert-warning">-->
-<!--    No links found matching your search.-->
-<!--</div>-->
 
 
 <!--<script th:src="@{/js/searchLink.js}"></script>-->
@@ -83,7 +75,7 @@
             error: function (err) {
                 console.error('Error fetching search results:', err);
             }
-        });
+        },300);
     }
 
 </script>

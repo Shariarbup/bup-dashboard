@@ -15,4 +15,6 @@ public interface LinkService {
     Link findCategoryById(Long id);
 
     void updateLink(Long id, Link updatedLink, List<Long> categoryIds);
+
+    List<Link> fetchLinkByQuery(String query);
 }
