@@ -29,8 +29,15 @@ public class DashboardController {
     public String searchLinks(@RequestParam("query") String query, Model model) {
         // Fetch categories and filter links based on the search query
         List<Category> categories = categoryService.getAllCategoriesWithFilteredLinks(query);
+
+        categories.forEach(category -> {
+            System.out.println("cat ca"+category.toString());
+        });
         model.addAttribute("categories", categories);
-        model.addAttribute("query", query); // Add query to the model
-        return "dashboard/bup-dashboard"; // Thymeleaf template name
+//        model.addAttribute("query", query);
+        // Add query to the model
+//        return "dashboard/bup-dashboard";
+        // Thymeleaf template name
+        return "dashboard/bup-dashboard :: #accordion-container";
     }
 }

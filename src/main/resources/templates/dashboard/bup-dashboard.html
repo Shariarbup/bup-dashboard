@@ -9,34 +9,83 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
-<div th:style="'width: 90%; margin: 0 auto;'" class="my-2">
-    <form th:action="@{/dashboards/search}" method="get" class="d-flex mb-3">
-        <input type="text" name="query" class="form-control me-2" placeholder="Search links by name" />
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-</div>
-<div class="accordion">
-    <div th:each="category : ${categories}" class="accordion-item">
-        <div class="accordion-item-header">
-            <!-- Display the category name -->
-            <span th:text="${category.name}"></span>
-        </div>
-        <div class="accordion-item-body">
-            <div class="accordion-item-body-content">
-                <!-- Loop through links associated with this category -->
-                <a th:each="link : ${category.links}"
-                   th:href="@{${link.url}}"
-                   th:classappend="${query != null and #strings.contains(link.name.toLowerCase(), query.toLowerCase())} ? 'search-highlight' : ''"
-                   th:text="${link.name}"></a>
+<!--<div th:style="'width: 90%; margin: 0 auto;'" class="my-2">-->
+<!--    <form th:action="@{/dashboards/search}" method="get" class="d-flex mb-3">-->
+<!--        <input type="text" name="query" class="form-control me-2" placeholder="Search links by name" />-->
+<!--        <button type="submit" class="btn btn-primary">Search</button>-->
+<!--    </form>-->
+<!--</div>-->
+<input type="text" id="search-query" class="form-control my-2"
+       th:style="'width: 90%; margin: 0 auto;'" placeholder="Search links..."
+       oninput="searchLinks()" />
+<div id="accordion-container" >
+    <div class="accordion">
+        <div th:each="category : ${categories}" class="accordion-item">
+            <div class="accordion-item-header">
+                <!-- Display the category name -->
+                <span th:text="${category.name}"></span>
+            </div>
+            <div class="accordion-item-body">
+                <div class="accordion-item-body-content">
+                    <!-- Loop through links associated with this category -->
+                    <a th:each="link : ${category.links}"
+                       th:href="@{${link.url}}"
+                       th:text="${link.name}"></a>
+                    <!--                th:classappend="${query != null and #strings.contains(link.name.toLowerCase(), query.toLowerCase())} ? 'search-highlight' : ''"-->
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div th:if="${#lists.isEmpty(categories)}" class="alert alert-warning">
-    No links found matching your search.
-</div>
+<!--<div th:if="${#lists.isEmpty(categories)}" class="alert alert-warning">-->
+<!--    No links found matching your search.-->
+<!--</div>-->
 
-<script th:src="@{/js/main.js}"></script>
+
+<!--<script th:src="@{/js/searchLink.js}"></script>-->
+<!--<script th:src="@{/js/main.js}"></script>-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        initializeAccordion();
+    });
+
+    function initializeAccordion() {
+        const accordionItemHeaders = document.querySelectorAll('.accordion-item-header');
+
+        accordionItemHeaders.forEach(accordionItemHeader => {
+            accordionItemHeader.classList.add("active");
+            const accordionItemBody = accordionItemHeader.nextElementSibling;
+            accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "px";
+
+            accordionItemHeader.addEventListener("click", event => {
+                accordionItemHeader.classList.toggle("active");
+                const accordionItemBody = accordionItemHeader.nextElementSibling;
+                if (accordionItemHeader.classList.contains("active")) {
+                    accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "px";
+                } else {
+                    accordionItemBody.style.maxHeight = 0;
+                }
+            });
+        });
+    }
+
+    function searchLinks() {
+        const query = document.getElementById('search-query').value;
+        $.ajax({
+            url: '/dashboards/search',
+            type: 'GET',
+            data: { query: query },
+            success: function (data) {
+                $('#accordion-container').html(data); // Update the accordion content
+                initializeAccordion(); // Reapply accordion logic to the updated content
+            },
+            error: function (err) {
+                console.error('Error fetching search results:', err);
+            }
+        });
+    }
+
+</script>
 </body>
 </html>
