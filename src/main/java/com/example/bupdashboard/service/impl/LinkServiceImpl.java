@@ -72,6 +72,6 @@ public class LinkServiceImpl implements LinkService {
 
     @Override
     public List<Link> fetchLinkByQuery(String query) {
-        return List.of();
+        return linkRepository.findByNameContainingIgnoreCase(query);
     }
 }

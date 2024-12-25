@@ -12,36 +12,65 @@
     <div class="row col-md-10 my-3">
         <h2 class="text-center">List of Registered Users</h2>
     </div>
-    <a class="btn btn-primary mb-3" th:href="@{/register}">Add User</a>
-    <table class="table table-bordered text-light">
-        <thead class="table-light">
-        <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Roles</th>
-            <th>Edit</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each = "user : ${users}">
-            <td th:text = "${user.id}"></td>
-            <td th:text = "${user.firstName}"></td>
-            <td th:text = "${user.lastName}"></td>
-            <td th:text = "${user.email}"></td>
-            <td>
-                <ul>
-                    <li th:each="role : ${user.roles}" th:text="${role.name}"></li>
-                </ul>
-            </td>
-            <td>
-                <a th:href="@{|/users/${user.id}/edit|}" class="btn btn-sm btn-warning">Edit</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Button on the left -->
+        <a class="btn btn-primary" th:href="@{/register}">Add User</a>
+        <!-- Search box on the right -->
+        <input type="text" id="search-query" class="form-control w-50"
+               placeholder="Search user by email..." oninput="searchUsers()" />
+    </div>
+    <div id="user-container">
+        <div th:if="${noResults}" class="alert alert-warning text-center">
+            No links found matching your search.
+        </div>
+        <table th:if="${noResults == false}" class="table table-bordered text-light">
+            <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each = "user : ${users}">
+                <td th:text = "${user.id}"></td>
+                <td th:text = "${user.firstName}"></td>
+                <td th:text = "${user.lastName}"></td>
+                <td th:text = "${user.email}"></td>
+                <td>
+                    <ul>
+                        <li th:each="role : ${user.roles}" th:text="${role.name}"></li>
+                    </ul>
+                </td>
+                <td>
+                    <a th:href="@{|/users/${user.id}/edit|}" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
+<div th:replace="fragments/footer :: footer"></div>
+
+<script>
+    function searchUsers() {
+        const query = document.getElementById('search-query').value;
+        $.ajax({
+            url: '/users/search',
+            type: 'GET',
+            data: { query: query },
+            success: function (data) {
+                $('#user-container').html(data); // Update the accordion content
+            },
+            error: function (err) {
+                console.error('Error fetching search results:', err);
+            }
+        },300);
+    }
+</script>
 </body>
 </html>

@@ -46,6 +46,7 @@ public class CategoryController {
     @GetMapping
     public String listCategories(Model model) {
         model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("noResults", categoryService.getAllCategories().isEmpty());
         return "categories/list";
     }
 
@@ -77,5 +78,15 @@ public class CategoryController {
     public String updateCategory(@PathVariable Long id, @ModelAttribute("category") Category category) {
         categoryService.updateCategory(id, category);
         return "redirect:/categories"; // Redirect to the category list page
+    }
+
+    @GetMapping("/search")
+    public String searchCategories(@RequestParam("query") String query, Model model) {
+        // Fetch categories and filter links based on the search query
+        List<Category> categories = categoryService.getCategoryByName(query);
+
+        model.addAttribute("categories", categories);
+        model.addAttribute("noResults", categories.isEmpty()); // Add a flag for empty results
+        return "categories/list :: #category-container";
     }
 }

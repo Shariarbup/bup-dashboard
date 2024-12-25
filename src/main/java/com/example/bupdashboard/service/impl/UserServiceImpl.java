@@ -75,6 +75,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(existingUser);
     }
 
+    @Override
+    public List<User> getUserByUserEmail(String query) {
+        return userRepository.findByEmailContainingIgnoreCase(query);
+    }
+
     private UserDto mapToUserDto(User user){
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());

@@ -9,33 +9,62 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
-<div class="container mt-5">
+<div class="container mt-3">
     <h1 class="text-center">Links</h1>
-    <a href="/links/new" class="btn btn-primary mb-3">Add Link</a>
-    <table class="table table-bordered text-light">
-        <thead class="table-light">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>URL</th>
-            <th>Categories</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="link : ${links}">
-            <td th:text="${link.id}"></td>
-            <td th:text="${link.name}"></td>
-            <td th:text="${link.url}"></td>
-            <td>
-                <span th:style="'margin-right: 2px;'" th:each="category : ${link.categories}" th:text="${category.name}" class="badge bg-secondary"></span>
-            </td>
-            <td>
-                <a th:href="@{/links/{id}/edit(id=${link.id})}" class="btn btn-warning btn-sm">Edit</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Button on the left -->
+        <a href="/links/new" class="btn btn-primary">Add Link</a>
+        <!-- Search box on the right -->
+        <input type="text" id="search-query" class="form-control w-50"
+               placeholder="Search link by name..." oninput="searchLinks()" />
+    </div>
+    <div id="link-container">
+        <div th:if="${noResults}" class="alert alert-warning text-center">
+            No links found matching your search.
+        </div>
+        <table th:if="${noResults == false}" class="table table-bordered text-light">
+            <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>URL</th>
+                <th>Categories</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="link : ${links}">
+                <td th:text="${link.id}"></td>
+                <td th:text="${link.name}"></td>
+                <td th:text="${link.url}"></td>
+                <td>
+                    <span th:style="'margin-right: 2px;'" th:each="category : ${link.categories}" th:text="${category.name}" class="badge bg-secondary"></span>
+                </td>
+                <td>
+                    <a th:href="@{/links/{id}/edit(id=${link.id})}" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+<div th:replace="fragments/footer :: footer"></div>
+<script>
+
+    function searchLinks() {
+        const query = document.getElementById('search-query').value;
+        $.ajax({
+            url: '/links/search',
+            type: 'GET',
+            data: { query: query },
+            success: function (data) {
+                $('#link-container').html(data); // Update the accordion content
+            },
+            error: function (err) {
+                console.error('Error fetching search results:', err);
+            }
+        },300);
+    }
+</script>
 </body>
 </html>

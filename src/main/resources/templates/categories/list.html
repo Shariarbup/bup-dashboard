@@ -9,29 +9,58 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
-<div class="container mt-5">
+<div class="container mt-3">
     <h1 class="text-center">Categories</h1>
-    <a href="/categories/new" class="btn btn-primary mb-3">Add Category</a>
-    <table class="table table-bordered text-light">
-        <thead class="table-light">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="category : ${categories}">
-            <td th:text="${category.id}"></td>
-            <td>
-                <a th:href="@{/categories/{categoryId}(categoryId=${category.id})}" th:text="${category.name}"></a>
-            </td>
-            <td>
-                <a th:href="@{/categories/{id}/edit(id=${category.id})}" class="btn btn-warning">Edit</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Button on the left -->
+        <a href="/categories/new" class="btn btn-primary">Add Category</a>
+        <!-- Search box on the right -->
+        <input type="text" id="search-query" class="form-control w-50"
+               placeholder="Search category by name..." oninput="searchCategories()" />
+    </div>
+
+    <div id="category-container">
+        <div th:if="${noResults}" class="alert alert-warning text-center">
+            No links found matching your search.
+        </div>
+        <table th:if="${noResults == false}" class="table table-bordered text-light">
+            <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.id}"></td>
+                <td>
+                    <a th:href="@{/categories/{categoryId}(categoryId=${category.id})}" th:text="${category.name}"></a>
+                </td>
+                <td>
+                    <a th:href="@{/categories/{id}/edit(id=${category.id})}" class="btn btn-warning">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+<div th:replace="fragments/footer :: footer"></div>
+<script>
+    function searchCategories() {
+        const query = document.getElementById('search-query').value;
+        $.ajax({
+            url: '/categories/search',
+            type: 'GET',
+            data: { query: query },
+            success: function (data) {
+                $('#category-container').html(data); // Update the category content
+            },
+            error: function (err) {
+                console.error('Error fetching search results:', err);
+            }
+        },300);
+    }
+</script>
 </body>
 </html>

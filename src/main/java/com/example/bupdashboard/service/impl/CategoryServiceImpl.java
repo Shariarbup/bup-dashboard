@@ -52,6 +52,11 @@ public class CategoryServiceImpl implements CategoryService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<Category> getCategoryByName(String query) {
+        return categoryRepository.findByNameContainingIgnoreCase(query);
+    }
+
     public Category findCategoryById(Long id) {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Category not found with id: " + id));

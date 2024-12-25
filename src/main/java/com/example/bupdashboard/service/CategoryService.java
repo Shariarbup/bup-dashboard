@@ -13,4 +13,6 @@ public interface CategoryService {
     void updateCategory(Long id, Category category);
 
     List<Category> getAllCategoriesWithFilteredLinks(String query);
+
+    List<Category> getCategoryByName(String query);
 }

@@ -35,6 +35,7 @@ public class UserController {
     public String users(Model model){
         List<UserDto> users = userService.findAllUsers();
         model.addAttribute("users", users);
+        model.addAttribute("noResults", users.isEmpty());
         return "users";
     }
 
@@ -96,5 +97,14 @@ public class UserController {
         userService.updateUser(id, user);
         redirectAttributes.addFlashAttribute("successMessage", "User updated successfully!");
         return "redirect:/users";
+    }
+
+    @GetMapping("/users/search")
+    public String searchUses(@RequestParam("query") String query, Model model) {
+        // Fetch users based on the search query
+        List<User> users = userService.getUserByUserEmail(query);
+        model.addAttribute("users", users);
+        model.addAttribute("noResults", users.isEmpty()); // Add a flag for empty results
+        return "users :: #user-container";
     }
 }

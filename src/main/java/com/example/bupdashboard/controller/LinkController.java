@@ -38,6 +38,7 @@ public class LinkController {
     @GetMapping
     public String listLinks(Model model) {
         model.addAttribute("links", linkService.getAllLinks());
+        model.addAttribute("noResults", linkService.getAllLinks().isEmpty());
         return "links/list";
     }
 
@@ -58,10 +59,11 @@ public class LinkController {
 
     @GetMapping("/search")
     public String searchLinks(@RequestParam("query") String query, Model model) {
-        // Fetch categories and filter links based on the search query
+        // Fetch links based on the search query
         List<Link> links = linkService.fetchLinkByQuery(query);
         model.addAttribute("links", links);
         model.addAttribute("noResults", links.isEmpty()); // Add a flag for empty results
-        return "links/list :: #links-container";
+        model.addAttribute("query", query);
+        return "links/list :: #link-container";
     }
 }
