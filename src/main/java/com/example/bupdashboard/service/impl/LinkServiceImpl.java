@@ -61,10 +61,18 @@ public class LinkServiceImpl implements LinkService {
         existingLink.setName(updatedLink.getName());
         existingLink.setUrl(updatedLink.getUrl());
 
-        // Update categories
-        List<Category> categories = categoryRepository.findAllById(categoryIds);
-        for (Category category : categories) {
-            existingLink.addCategory(category);
+        for (Category category : new HashSet<>(existingLink.getCategories())) { // Create a copy to avoid ConcurrentModificationException
+            category.getLinks().remove(existingLink); // Update the other side
+        }
+        existingLink.getCategories().clear(); // Clear the categories from the link side
+
+        // Step 2: Add new categories
+        if (categoryIds != null && !categoryIds.isEmpty()) {
+            List<Category> newCategories = categoryRepository.findAllById(categoryIds);
+            for (Category category : newCategories) {
+                existingLink.getCategories().add(category); // Add category to the link
+                category.getLinks().add(existingLink);      // Add link to the category
+            }
         }
 
         linkRepository.save(existingLink);

@@ -5,6 +5,7 @@ import com.example.bupdashboard.entity.Link;
 import com.example.bupdashboard.repository.CategoryRepository;
 import com.example.bupdashboard.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
+        return categoryRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override

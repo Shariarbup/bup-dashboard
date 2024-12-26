@@ -27,19 +27,21 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/register/**").permitAll()
-                                .requestMatchers("/index").permitAll()
+                        authorize.requestMatchers("/", "/index").permitAll()
                                 .requestMatchers("/webjars/**", "/resources/**", "/css/**").permitAll()
-                                .requestMatchers("/api/**").authenticated().anyRequest().authenticated() // Allow authenticated access to /api/**
+                                .requestMatchers("/dashboards").permitAll()
+                                .requestMatchers("/dashboards/search").permitAll()
+                                .anyRequest().authenticated() // Allow authenticated access to /api/**
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users")
+                                .defaultSuccessUrl("/dashboards", true)
                                 .permitAll()
                 ).logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                                .logoutSuccessUrl("/login?logout")
                                 .permitAll()
                 );
         return http.build();
