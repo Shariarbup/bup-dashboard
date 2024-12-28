@@ -80,7 +80,7 @@ body {
     display: block;
     flex: 1 1 calc(33.333% - 30px); /* Three items per row with gap */
     text-align: center;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+    /*background: linear-gradient(135deg, #6a11cb, #2575fc); !* Gradient background *!*/
     color: white;
     text-decoration: none;
     font-size: 16px;
@@ -95,7 +95,8 @@ body {
 .accordion-item-body-content a:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Elevated shadow on hover */
     transform: translateY(-4px); /* Slight lift effect */
-    background: linear-gradient(135deg, #2575fc, #6a11cb); /* Reverse gradient on hover */
+    /*background: linear-gradient(135deg, #2575fc, #6a11cb); !* Reverse gradient on hover *!*/
+    background: linear-gradient(135deg, #1f1f1f, #4e4e4e);
 }
 
 .accordion-item-body-content a:active {
@@ -117,4 +118,32 @@ body {
     html {
         font-size: 14px;
     }
+}
+
+.link-category-0 {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Warm Sunset */
+}
+
+.link-category-1 {
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Vibrant Purple-Blue */
+}
+
+.link-category-2 {
+    background: linear-gradient(135deg, #56ab2f, #a8e063); /* Fresh Green */
+}
+
+.link-category-3 {
+    background: linear-gradient(135deg, #ff6a00, #ee0979); /* Fiery Orange-Pink */
+}
+
+.link-category-4 {
+    background: linear-gradient(135deg, #1fa2ff, #12d8fa, #a6ffcb); /* Cool Blue-Green */
+}
+
+.link-category-5 {
+    background: linear-gradient(135deg, #f953c6, #b91d73); /* Bold Pink-Violet */
+}
+
+.link-category-6 {
+    background: linear-gradient(135deg, #00c6ff, #0072ff); /* Ocean Blue */
 }

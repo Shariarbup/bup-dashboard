@@ -17,7 +17,7 @@
         No links found matching your search.
     </div>
     <div class="accordion">
-        <div th:each="category : ${categories}" class="accordion-item">
+        <div th:each="category, iter : ${categories}" class="accordion-item">
             <div class="accordion-item-header">
                 <!-- Display the category name -->
                 <span th:text="${category.name}"></span>
@@ -27,6 +27,7 @@
                     <!-- Loop through links associated with this category -->
                     <a th:each="link : ${category.links}"
                        th:href="@{${link.url}}"
+                       th:class="'link-category-' + ${iter.index}"
                        th:text="${link.name}"></a>
                 </div>
             </div>
