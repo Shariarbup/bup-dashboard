@@ -22,7 +22,7 @@
         </div>
         <div class="mb-3">
             <label for="categories" class="form-label">Select Categories</label>
-            <select multiple class="form-control" id="categories" name="categoryIds" required>
+            <select multiple class="form-control" id="categories" name="categoryIds" required size="7">
                 <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
             </select>
         </div>

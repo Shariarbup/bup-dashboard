@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
             <label for="categories">Categories</label>
-            <select id="categories" name="categoryIds" class="form-control" multiple size="8">
+            <select id="categories" name="categoryIds" class="form-control" multiple size="7">
                 <option th:each="category : ${categories}"
                         th:value="${category.id}"
                         th:text="${category.name}"
