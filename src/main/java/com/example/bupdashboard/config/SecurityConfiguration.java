@@ -28,15 +28,17 @@ public class SecurityConfiguration {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/", "/index").permitAll()
-                                .requestMatchers("/webjars/**", "/resources/**", "/css/**").permitAll()
+                                .requestMatchers("/webjars/**", "/resources/**",
+                                        "/css/**", "/images/**", "/js/**").permitAll()
                                 .requestMatchers("/dashboards").permitAll()
                                 .requestMatchers("/dashboards/search").permitAll()
+                                .requestMatchers("/dashboards/search/new").permitAll()
                                 .anyRequest().authenticated() // Allow authenticated access to /api/**
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/dashboards", true)
+                                .defaultSuccessUrl("/users", true)
                                 .permitAll()
                 ).logout(
                         logout -> logout

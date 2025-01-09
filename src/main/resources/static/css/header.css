@@ -1,0 +1,117 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    /* background-color: #58111A;  */
+    background-color: #4a6d42;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 10% 100%);
+    height: 20vh;
+}
+
+/* Navbar icon (left, 10% width) */
+.navbar-icon {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-icon img {
+    height: 15vh; /* Set image height */
+    object-fit: contain; /* Ensures the image maintains its aspect ratio */
+}
+
+/* Navbar-dashboard (center, 80% width) */
+.navbar-dashboard {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.dashboard-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff; /* Dark text color */
+    margin-bottom: 10px;
+}
+
+.search-link-input {
+    width: 100%; /* Ensures the parent container uses full width */
+    display: flex; /* Makes the input stretch */
+    justify-content: center; /* Optional: Center-align input if needed */
+}
+
+.search-link-input input {
+    width: 100%; /* Ensures input fills the parent's width */
+    padding: 8px 12px; /* Adds internal spacing */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box; /* Includes padding and borders in width calculation */
+    transition: all 0.3s ease-in-out;
+}
+
+.search-link-input input:focus {
+    border-color: #007bff; /* Blue border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+/* Navbar-menu (right, 10% width) */
+.navbar-menu {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+
+
+/* Vertical Navbar */
+.vertical-navbar {
+    position: absolute;
+    top: 12vh; /* Aligns with the bottom of the header */
+    right: 10%;
+    background-color: white;
+    color: black;
+    width: 200px;
+    height: 0; /* Initially collapsed */
+    overflow: hidden; /* Hide content when collapsed */
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+    z-index: 1000;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.vertical-navbar.show {
+    height: auto; /* Expand */
+    opacity: 1;
+    transform: scaleY(1); /* Smoothly expand */
+}
+
+.vertical-navbar a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid #ddd;
+}
+
+.vertical-navbar a:hover {
+    background-color: #f0f0f0;
+    color: red;
+}

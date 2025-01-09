@@ -1,0 +1,49 @@
+<!-- Navbar Fragment -->
+<div th:fragment="header-with-clip-path" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="header">
+        <div class="navbar-icon">
+            <a th:href="@{/dashboards}">
+                <img th:src="@{/images/menu-icon.svg}" alt="Menu Icon">
+            </a>
+        </div>
+
+        <div class="navbar-dashboard">
+            <!-- Centered dashboard text -->
+            <div class="dashboard-text" data-aos="zoom-out">
+                <a th:href="@{/dashboards}" style="text-decoration: none; color: #ffffff">BUP DASHBOARD</a>
+            </div>
+            <!-- Search input -->
+            <div class="search-link-input" data-aos="zoom-in">
+                <form th:action="@{/dashboards/search/new}" method="get" style="width: 100%">
+                    <input type="text" name="query" placeholder="Search Link..." id="search-query">
+                </form>
+            </div>
+            <!-- Navbar with menu icon -->
+        </div>
+        <div class="navbar-menu" data-aos="zoom-in-left">
+            <span class="menu-icon"  onclick="toggleNavbar()">☰</span>
+        </div>
+    </div>
+
+    <!-- Vertical Navbar -->
+    <div class="vertical-navbar" id="verticalNavbar">
+        <a href="https://webportal.bup.edu.bd/">UCAM</a>
+        <a href="https://portal.bup.edu.bd/Docs/Update%20Telephone%20Directory%2009-Dec-24.pdf">Telephone directory</a>
+        <a href="http://inventory.bup.edu.bd/">Inventory Management System (IMS)</a>
+        <a href="https://payroll.bup.edu.bd/">Payroll Management System</a>
+        <a href="https://vrms.bup.edu.bd/">Vehicle Requisition system (VRS)</a>
+        <a href="https://admission.bup.edu.bd/">Admission site</a>
+        <a href="https://www.bup.edu.bd/">BUP Website</a>
+        <a href="https://www.microsoft365.com/">BUP Webmail</a>
+        <a href="https://ebook.bup.edu.bd/">eBook</a>
+        <a href="https://onestopservice.bup.edu.bd/">One Stop Service, ICT Centre</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/users}">Users</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/categories}">Categories</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/links}">Links</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/register}">Register</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+        <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+
+
+    </div>
+</div>

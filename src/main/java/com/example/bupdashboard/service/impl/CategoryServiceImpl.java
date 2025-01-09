@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,7 +51,9 @@ public class CategoryServiceImpl implements CategoryService {
                     category.setLinks(filteredLinks); // Update category with filtered links
                 })
                 .filter(category -> !category.getLinks().isEmpty()) // Keep only categories with links
+                .sorted(Comparator.comparing(Category::getId)) // Sort categories by id
                 .collect(Collectors.toList());
+
     }
 
     @Override

@@ -30,11 +30,18 @@ public class DashboardController {
         // Fetch categories and filter links based on the search query
         List<Category> categories = categoryService.getAllCategoriesWithFilteredLinks(query);
 
-        categories.forEach(category -> {
-            System.out.println("cat ca"+category.toString());
-        });
         model.addAttribute("categories", categories);
         model.addAttribute("noResults", categories.isEmpty()); // Add a flag for empty results
-        return "dashboard/bup-dashboard :: #accordion-container";
+        return "dashboard/category-search-result :: #accordion-container";
+    }
+
+    @GetMapping("/search/new")
+    public String searchLinksFromHomePage(@RequestParam("query") String query, Model model) {
+        List<Category> categories = categoryService.getAllCategoriesWithFilteredLinks(query);
+
+        model.addAttribute("categories", categories);
+        model.addAttribute("noResults", categories.isEmpty()); // Add a flag for empty results
+        model.addAttribute("query", query);
+        return "dashboard/category-search-result";
     }
 }

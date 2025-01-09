@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6" lang="en">
+<head>
+  <title>BUP DASHBOARD</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/dashboard-body.css}" />
+
+  <link rel="stylesheet" type="text/css" th:href="@{/css/website-link.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="header">
+  <div class="navbar-icon">
+    <a th:href="@{/dashboards}">
+      <img th:src="@{/images/menu-icon.svg}" alt="Menu Icon">
+    </a>
+  </div>
+
+  <div class="navbar-dashboard">
+    <!-- Centered dashboard text -->
+    <div class="dashboard-text" data-aos="zoom-out">
+      <a th:href="@{/dashboards}"  style="text-decoration: none; color: #ffffff">BUP DASHBOARD</a>
+    </div>
+    <!-- Search input -->
+    <div class="search-link-input" data-aos="zoom-in">
+      <input type="text" placeholder="Search Link..." id="search-query"
+             th:value="${query}"
+             oninput="searchLinks()">
+    </div>
+    <!-- Navbar with menu icon -->
+  </div>
+  <div class="navbar-menu" data-aos="zoom-in-left">
+    <span class="menu-icon"  onclick="toggleNavbar()">☰</span>
+  </div>
+</div>
+<!-- Vertical Navbar -->
+<div class="vertical-navbar" id="verticalNavbar">
+  <a href="https://webportal.bup.edu.bd/">UCAM</a>
+  <a href="https://portal.bup.edu.bd/Docs/Update%20Telephone%20Directory%2009-Dec-24.pdf">Telephone directory</a>
+  <a href="http://inventory.bup.edu.bd/">Inventory Management System (IMS)</a>
+  <a href="https://payroll.bup.edu.bd/">Payroll Management System</a>
+  <a href="https://vrms.bup.edu.bd/">Vehicle Requisition system (VRS)</a>
+  <a href="https://admission.bup.edu.bd/">Admission site</a>
+  <a href="https://www.bup.edu.bd/">BUP Website</a>
+  <a href="https://www.microsoft365.com/">BUP Webmail</a>
+  <a href="https://ebook.bup.edu.bd/">eBook</a>
+  <a href="https://onestopservice.bup.edu.bd/">One Stop Service, ICT Centre</a>
+  <a sec:authorize="isAuthenticated()" th:href="@{/users}">Users</a>
+  <a sec:authorize="isAuthenticated()" th:href="@{/templates/categories}">Categories</a>
+  <a sec:authorize="isAuthenticated()" th:href="@{/templates/links}">Links</a>
+  <a sec:authorize="isAuthenticated()" th:href="@{/register}">Register</a>
+  <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+  <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+
+
+</div>
+<div id="accordion-container" >
+  <div th:if="${noResults}" class="alert alert-warning text-center" th:style="'width: 90%; margin: 0 auto;'">
+    No links found matching your search.
+  </div>
+
+  <div class="website-link-container" data-aos="fade-left">
+    <h2 class="website-link-header">Important Webite Link</h2>
+    <div class="accordion">
+      <div th:each="category, iter : ${categories}" class="accordion-item">
+        <div class="accordion-item-header">
+          <!-- Display the category name -->
+          <span th:text="${category.name}"></span>
+        </div>
+        <div class="accordion-item-body">
+          <div class="accordion-item-body-content">
+            <!-- Loop through links associated with this category -->
+            <a th:each="link : ${category.links}"
+               th:href="@{${link.url}}"
+               th:class="'link-category-' + ${iter.index}"
+               th:text="${link.name}"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div th:replace="fragments/footer-with-clip-path :: footer-with-clip-path"></div>
+
+
+<script th:src="@{/js/searchLink.js}"></script>
+<script th:src="@{/js/accordian.js}"></script>
+<script th:src="@{/js/navbar.js}"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000
+  });
+</script>
+
+</body>
+</html>

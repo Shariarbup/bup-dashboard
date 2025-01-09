@@ -1,0 +1,80 @@
+.info-container {
+    width: 90%;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.info-header {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 10px;
+    background: linear-gradient(to right, #5e4fdb, #9c27b0); /* Gradient background */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: headerAnimation 1s ease-in-out;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 1;
+    min-width: 45%; /* Ensures that each column takes up at least 45% width on larger screens */
+    max-width: 48%;
+    box-sizing: border-box;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info-table th, .info-table td {
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.info-table th {
+    background-color: #007bff;
+    color: white;
+    font-size: 0.9empx;
+}
+
+.info-table td {
+    background-color: #fff;
+    font-size: 0.8em;
+}
+
+.info-table tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+.info-table td {
+    font-weight: bold;
+    color: #007bff;
+}
+
+@media (max-width: 768px) {
+    .column {
+        min-width: 100%; /* Stacks columns on top of each other on smaller screens */
+    }
+    .info-table {
+        font-size: 14px;
+    }
+}

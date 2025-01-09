@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BUP DASHBOARD</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<!-- Stylish Header with Gradient -->
+<div class="shapes">
+    <h1>BUP DASHBOARD</h1>
+</div>
+
+<!-- Page Content -->
+<div class="container py-5">
+
+    <!-- Statistics Section -->
+    <div class="section-title">Statistics</div>
+    <div class="dashboard-grid fade-in row">
+        <div class="col-md-3">
+            <div class="dashboard-card card-primary">
+                <div class="icon"><i class="bi bi-people-fill"></i></div>
+                <h3>Total Students</h3>
+                <p class="highlight" id="studentsCount">0</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashboard-card card-secondary">
+                <div class="icon"><i class="bi bi-person-workspace"></i></div>
+                <h3>Total Teachers</h3>
+                <p class="highlight" id="teachersCount">0</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashboard-card card-tertiary">
+                <div class="icon"><i class="bi bi-building"></i></div>
+                <h3>Total Offices</h3>
+                <p class="highlight" id="officesCount">0</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashboard-card card-quaternary">
+                <div class="icon"><i class="bi bi-journal"></i></div>
+                <h3>Total Courses</h3>
+                <p class="highlight" id="coursesCount">0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Events Section -->
+    <div class="section-title">Events</div>
+    <div class="dashboard-grid fade-in row">
+        <div class="col-md-3">
+            <div class="dashboard-card card-primary">
+                <div class="icon"><i class="bi bi-calendar-event"></i></div>
+                <h3>Today's Events</h3>
+                <p>3 Upcoming Events</p>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- End Container -->
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<!--<script th:src="@{/js/searchLink.js}"></script>-->
+<!--<script th:src="@{/js/accordian.js}"></script>-->
+<script>
+
+
+</script>
+</body>
+</html>

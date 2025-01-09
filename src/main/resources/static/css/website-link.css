@@ -1,0 +1,153 @@
+.website-link-container {
+    width: 90%;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.website-link-header {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 10px;
+    background: linear-gradient(to right, #5e4fdb, #9c27b0); /* Gradient background */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: headerAnimation 1s ease-in-out;
+
+}
+
+/* Middle side accordian */
+.accordion {
+    width: 98%;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    background-color: #fff;
+    color: #111;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+.accordion-item-header {
+    padding: 0.5rem 3rem 0.5rem 1rem;
+    min-height: 3.5rem;
+    line-height: 1.25rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.accordion-item-header::after {
+    /* content: "\25BE";  if i use this then transform = rotate(180deg/ -180deg for anti clock wise)*/
+    content: '\002B';
+    font-size: 2rem;
+    position: absolute;
+    right: 1rem;
+    transition: transform 0.2s ease-in-out;
+
+}
+
+.accordion-item-header.active::after {
+    content: ' \2212';
+    /* transform: rotate(45deg); */
+}
+
+.accordion-item-body {
+    /* display: block; */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    /* position: relative; */
+    /* padding-bottom: 2rem; */
+
+}
+
+.see-more-button {
+    margin-top: 1%;
+    background-color: #2575fc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.see-more-button:hover {
+    background-color: #6a11cb;
+    transform: scale(1.1);
+}
+
+.see-more-button:active {
+    background-color: #04122b;
+    transform: scale(1);
+}
+
+.accordion-item-body-content {
+    padding: 1rem;
+    line-height: 1.5rem;
+    /* border-top: 2px solid; */
+    /* border-image: linear-gradient(to right, #008f68, #fae042) 1; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between items */
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ddd; /* Border for better separation */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.accordion-item-body-content a {
+    display: block;
+    flex: 1 1 calc(33.333% - 30px); /* Three items per row with gap */
+    text-align: center;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 18px;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+
+}
+
+.accordion-item-body-content a:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Elevated shadow on hover */
+    transform: translateY(-4px); /* Slight lift effect */
+    background: linear-gradient(135deg, #04122b, #16012c); /* Reverse gradient on hover */
+    color: #fff;
+}
+
+.accordion-item-body-content a:active {
+    transform: translateY(0); /* Reset on click */
+    background: linear-gradient(135deg, #4e8ef7, #8859cc); /* Slightly muted gradient on active */
+}
+
+.accordion-item-header.active + .accordion-item-body {
+    /* display: none; */
+    max-height: auto;
+}
+
+@media(max-width: 767px) {
+    html {
+        font-size: 14px;
+    }
+}
