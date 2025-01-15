@@ -1,0 +1,79 @@
+.e-subscription-container {
+    width: 90%;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+.e-subscription-header {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 10px;
+    background: linear-gradient(to right, #5e4fdb, #9c27b0); /* Gradient background */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: headerAnimation 1s ease-in-out;
+}
+
+/* Animating Header */
+@keyframes headerAnimation {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Grid styling */
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Resource card styling */
+.resource-card {
+    display: block;
+    background: linear-gradient(135deg, #e3ffe7, #d9e7ff);
+    color: #333;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Hover effects for cards */
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #5e4fdb, #9c27b0);
+    color: #fff;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .resource-card {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .resource-header {
+        font-size: 1.5em;
+    }
+}

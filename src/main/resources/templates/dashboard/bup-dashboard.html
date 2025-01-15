@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/image-slider.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/info.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/statistics.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/eSubscription.css}" />
+
     <link rel="stylesheet" type="text/css" th:href="@{/css/website-link.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -75,10 +77,28 @@
                         <th>Todays Event</th>
                     </tr>
                     <tr>
-                        <td>First Event</td>
+                        <td>
+                            <div class="event-row">
+                                <div class="event-date">15 Jan 2025</div>
+                                <div class="event-info">
+                                    <strong>Second Event</strong><br>
+                                    Time: 2:00 PM<br>
+                                    Venue: Conference Room
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Second Event</td>
+                        <td>
+                            <div class="event-row">
+                                <div class="event-date">15 Jan 2025</div>
+                                <div class="event-info">
+                                    <strong>97th Deans Committee Meeting</strong><br>
+                                    Time:  09:30 AM <br>
+                                    Venue: CCR
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -87,11 +107,54 @@
                     <tr>
                         <th>Upcoming Events</th>
                     </tr>
+
                     <tr>
-                        <td>First Event</td>
+                        <td>
+                            <div class="event-row">
+                                <div class="event-date">17 Jan 2025</div>
+                                <div class="event-info">
+                                    <strong>Orientation Program of MPhil and PhD Programmes (Session: 2024-2025B)</strong><br>
+                                    Time: 15:30 PM<br>
+                                    Venue: CHSR Seminar Hall
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Second Event</td>
+                        <td>
+                            <div class="event-row">
+                                <div class="event-date">19 Jan 2025</div>
+                                <div class="event-info">
+                                    <strong>85th Finance Committee Meeting</strong><br>
+                                    Time: 09:00 AM<br>
+                                    Venue: CCR
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="event-row">
+                                <div class="event-date">20 Jan 2025</div>
+                                <div class="event-info">
+                                    <strong>BUP Research Project Presentation Funded by UGC</strong><br>
+                                    Time: 08:30 AM<br>
+                                    Venue: CHSR Seminar Hall
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="event-row">
+                                <div class="event-date">21 Jan 2025</div>
+                                <div class="event-info">
+                                    <strong>2nd Seminar (Research Advancement) of PhD Researcher Md Salim-ur-</strong><br>
+                                    Time: 13:50 PM<br>
+                                    Venue: CCR
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -152,7 +215,7 @@
                     </tr>
                     <tr>
                         <td>Number of Complaints Resolved</td>
-                        <td id="complaints-resolved-count">0</td>
+                        <td id="complaints-resolved-count">20000</td>
                     </tr>
                     </tbody>
                 </table>
@@ -170,19 +233,19 @@
                     <tbody>
                     <tr>
                         <td>Number of Faculty</td>
-                        <td id="faculty-count">0</td>
+                        <td id="faculty-count">4</td>
                     </tr>
                     <tr>
                         <td>Number of Departments</td>
-                        <td id="departments-count">0</td>
+                        <td id="departments-count">25</td>
                     </tr>
                     <tr>
                         <td>Number of Programs</td>
-                        <td id="programs-count">0</td>
+                        <td id="programs-count">55</td>
                     </tr>
                     <tr>
                         <td>Number of Courses</td>
-                        <td>0</td>
+                        <td>55</td>
                     </tr>
                     <tr>
                         <td>Number of Affiliated Organizations</td>
@@ -190,23 +253,23 @@
                     </tr>
                     <tr>
                         <td>Number of Graduate Students</td>
-                        <td id="graduate-students-count">0</td>
+                        <td id="graduate-students-count">60</td>
                     </tr>
                     <tr>
                         <td>Number of Books in Library</td>
-                        <td id="books-in-library-count">0</td>
+                        <td id="books-in-library-count">10000</td>
                     </tr>
                     <tr>
                         <td>Number of Publisher Journals</td>
-                        <td id="publisher-journals-count">0</td>
+                        <td id="publisher-journals-count">2000</td>
                     </tr>
                     <tr>
                         <td>Number of Publisher Articles</td>
-                        <td id="publisher-articles-count">0</td>
+                        <td id="publisher-articles-count">2000</td>
                     </tr>
                     <tr>
                         <td>Number of Registered Alumni Students</td>
-                        <td id="alumni-students-count">0</td>
+                        <td id="alumni-students-count">5000</td>
                     </tr>
                     </tbody>
                 </table>
@@ -215,6 +278,24 @@
         <button class="see-more-button">See More</button>
     </div>
 
+    <div class="e-subscription-container" data-aos="fade-left">
+        <h2 class="e-subscription-header">E-Subscriptions</h2>
+        <div class="resource-grid">
+            <a href="https://www.cambridge.org/core" target="_blank" class="resource-card">Cambridge University Press</a>
+            <a href="http://emeraldinsight.com/" target="_blank" class="resource-card">Emerald</a>
+            <a href="https://ieeexplore.ieee.org/Xplore/home.jsp" target="_blank" class="resource-card">IEEE</a>
+            <a href="https://www.jstor.org/" target="_blank" class="resource-card">JSTOR</a>
+            <a href="https://www.expresslibrary.mheducation.com/" target="_blank" class="resource-card">McGraw Hill</a>
+            <a href="http://oxfordscholarship.com/" target="_blank" class="resource-card">Oxford Scholarship</a>
+            <a href="https://ebookcentral.proquest.com/" target="_blank" class="resource-card">Pearson</a>
+            <a href="https://login.research4life.org/tacgw/welcome.cshtml" target="_blank" class="resource-card">Research4Life</a>
+            <a href="https://sk.sagepub.com/" target="_blank" class="resource-card">Sage</a>
+            <a href="https://link.springer.com/" target="_blank" class="resource-card">Springer</a>
+            <a href="https://www.taylorfrancis.com/" target="_blank" class="resource-card">Taylor and Francis</a>
+            <a href="https://www.worldscientific.com/action/oidcCallback?idpCode=connect&error=login_required&error_description=Login+required&state=3uobhNdfews%3D" target="_blank" class="resource-card">World Scientific</a>
+        </div>
+
+    </div>
 
 
 
@@ -232,7 +313,8 @@
                         <a th:each="link : ${category.links}"
                            th:href="@{${link.url}}"
                            th:class="'link-category-' + ${iter.index}"
-                           th:text="${link.name}"></a>
+                           th:text="${link.name}"
+                           target="_blank" ></a>
                     </div>
                 </div>
             </div>

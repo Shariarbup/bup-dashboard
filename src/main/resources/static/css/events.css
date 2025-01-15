@@ -98,3 +98,8 @@ tr:hover td {
         margin-bottom: 20px;
     }
 }
+
+.event-row {
+    display: flex;
+    gap: 3%;
+}
