@@ -69,10 +69,17 @@ th, td {
     color: #333;
 }
 
-th {
-    background-color: #007bff;
-    color: white;
+.event-table th {
+    background-color: #ffffff;
+    color: #000000;
     font-weight: bold;
+}
+
+.event-table-header {
+    background-color: #033364;
+    padding: 2%;
+    border-radius: 5px;
+    color: #fff;
 }
 
 td {
