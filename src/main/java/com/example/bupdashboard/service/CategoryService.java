@@ -1,6 +1,6 @@
 package com.example.bupdashboard.service;
 
-import com.example.bupdashboard.entity.Category;
+import com.example.bupdashboard.dashboardDb.entity.Category;
 
 import java.util.List;
 

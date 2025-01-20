@@ -1,6 +1,6 @@
-package com.example.bupdashboard.repository;
+package com.example.bupdashboard.dashboardDb.repository;
 
-import com.example.bupdashboard.entity.Role;
+import com.example.bupdashboard.dashboardDb.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {

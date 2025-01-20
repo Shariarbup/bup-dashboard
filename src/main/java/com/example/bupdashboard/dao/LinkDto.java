@@ -1,8 +1,6 @@
 package com.example.bupdashboard.dao;
 
-import com.example.bupdashboard.entity.Category;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToMany;
+import com.example.bupdashboard.dashboardDb.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

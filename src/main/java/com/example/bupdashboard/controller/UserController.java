@@ -1,9 +1,9 @@
 package com.example.bupdashboard.controller;
 
 import com.example.bupdashboard.dao.UserDto;
-import com.example.bupdashboard.entity.Role;
-import com.example.bupdashboard.entity.User;
-import com.example.bupdashboard.repository.RoleRepository;
+import com.example.bupdashboard.dashboardDb.entity.Role;
+import com.example.bupdashboard.dashboardDb.entity.User;
+import com.example.bupdashboard.dashboardDb.repository.RoleRepository;
 import com.example.bupdashboard.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
 package com.example.bupdashboard.controller;
 
-import com.example.bupdashboard.entity.Category;
+import com.example.bupdashboard.dashboardDb.entity.Category;
 import com.example.bupdashboard.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

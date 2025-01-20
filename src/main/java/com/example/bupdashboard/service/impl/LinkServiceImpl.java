@@ -1,10 +1,10 @@
 package com.example.bupdashboard.service.impl;
 
 import com.example.bupdashboard.dao.LinkDto;
-import com.example.bupdashboard.entity.Category;
-import com.example.bupdashboard.entity.Link;
-import com.example.bupdashboard.repository.CategoryRepository;
-import com.example.bupdashboard.repository.LinkRepository;
+import com.example.bupdashboard.dashboardDb.entity.Category;
+import com.example.bupdashboard.dashboardDb.entity.Link;
+import com.example.bupdashboard.dashboardDb.repository.CategoryRepository;
+import com.example.bupdashboard.dashboardDb.repository.LinkRepository;
 import com.example.bupdashboard.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

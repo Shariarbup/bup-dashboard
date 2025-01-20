@@ -33,6 +33,7 @@ public class SecurityConfiguration {
                                 .requestMatchers("/dashboards").permitAll()
                                 .requestMatchers("/dashboards/search").permitAll()
                                 .requestMatchers("/dashboards/search/new").permitAll()
+                                .requestMatchers("/api/v1/events").permitAll()
                                 .anyRequest().authenticated() // Allow authenticated access to /api/**
                 ).formLogin(
                         form -> form

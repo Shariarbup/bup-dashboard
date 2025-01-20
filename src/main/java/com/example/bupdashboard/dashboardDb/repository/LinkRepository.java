@@ -1,6 +1,6 @@
-package com.example.bupdashboard.repository;
+package com.example.bupdashboard.dashboardDb.repository;
 
-import com.example.bupdashboard.entity.Link;
+import com.example.bupdashboard.dashboardDb.entity.Link;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

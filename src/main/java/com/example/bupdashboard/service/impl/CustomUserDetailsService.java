@@ -1,8 +1,8 @@
 package com.example.bupdashboard.service.impl;
 
-import com.example.bupdashboard.entity.Role;
-import com.example.bupdashboard.entity.User;
-import com.example.bupdashboard.repository.UserRepository;
+import com.example.bupdashboard.dashboardDb.entity.Role;
+import com.example.bupdashboard.dashboardDb.entity.User;
+import com.example.bupdashboard.dashboardDb.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

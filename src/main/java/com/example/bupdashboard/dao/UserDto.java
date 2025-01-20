@@ -1,6 +1,6 @@
 package com.example.bupdashboard.dao;
 
-import com.example.bupdashboard.entity.Role;
+import com.example.bupdashboard.dashboardDb.entity.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;

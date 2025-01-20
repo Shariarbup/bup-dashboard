@@ -1,7 +1,7 @@
 package com.example.bupdashboard.service;
 
 import com.example.bupdashboard.dao.LinkDto;
-import com.example.bupdashboard.entity.Link;
+import com.example.bupdashboard.dashboardDb.entity.Link;
 
 import java.util.List;
 

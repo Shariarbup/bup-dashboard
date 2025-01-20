@@ -1,9 +1,7 @@
-package com.example.bupdashboard.entity;
+package com.example.bupdashboard.dashboardDb.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

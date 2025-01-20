@@ -1,9 +1,9 @@
 package com.example.bupdashboard.controller;
 
-import com.example.bupdashboard.entity.Category;
-import com.example.bupdashboard.entity.Link;
-import com.example.bupdashboard.repository.CategoryRepository;
-import com.example.bupdashboard.repository.LinkRepository;
+import com.example.bupdashboard.dashboardDb.entity.Category;
+import com.example.bupdashboard.dashboardDb.entity.Link;
+import com.example.bupdashboard.dashboardDb.repository.CategoryRepository;
+import com.example.bupdashboard.dashboardDb.repository.LinkRepository;
 import com.example.bupdashboard.service.CategoryService;
 import com.example.bupdashboard.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;

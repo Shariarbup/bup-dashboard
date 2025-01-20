@@ -1,10 +1,10 @@
 package com.example.bupdashboard.service.impl;
 
 import com.example.bupdashboard.dao.UserDto;
-import com.example.bupdashboard.entity.Role;
-import com.example.bupdashboard.entity.User;
-import com.example.bupdashboard.repository.RoleRepository;
-import com.example.bupdashboard.repository.UserRepository;
+import com.example.bupdashboard.dashboardDb.entity.Role;
+import com.example.bupdashboard.dashboardDb.entity.User;
+import com.example.bupdashboard.dashboardDb.repository.RoleRepository;
+import com.example.bupdashboard.dashboardDb.repository.UserRepository;
 import com.example.bupdashboard.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

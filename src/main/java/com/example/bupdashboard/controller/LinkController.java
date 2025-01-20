@@ -1,7 +1,6 @@
 package com.example.bupdashboard.controller;
 
-import com.example.bupdashboard.dao.LinkDto;
-import com.example.bupdashboard.entity.Link;
+import com.example.bupdashboard.dashboardDb.entity.Link;
 import com.example.bupdashboard.service.CategoryService;
 import com.example.bupdashboard.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
