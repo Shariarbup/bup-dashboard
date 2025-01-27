@@ -76,7 +76,8 @@
 /*}*/
 
 .event-table-header {
-    background-color: #033364;
+    background-color: #4CAF50;
+    /*#033364*/
     padding: 2%;
     border-radius: 5px;
     color: #fff;
@@ -111,12 +112,12 @@
     flex: 20%;
     gap: 5%;
     padding: 5px;
-    color: #4A6D42;
+    color: #4CAF50;
     font-weight: bold;
 }
 
 .event-container:hover .event-date {
-    background-color: #4A6D42;
+    background-color: #4CAF50;
     color: #ffffff;
 }
 
