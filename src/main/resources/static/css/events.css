@@ -57,23 +57,23 @@
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+/*table {*/
+/*    width: 100%;*/
+/*    border-collapse: collapse;*/
+/*}*/
 
-th, td {
-    padding: 12px;
-    text-align: left;
-    font-size: 1rem;
-    color: #333;
-}
+/*th, td {*/
+/*    padding: 12px;*/
+/*    text-align: left;*/
+/*    font-size: 1rem;*/
+/*    color: #333;*/
+/*}*/
 
-.event-table th {
-    background-color: #ffffff;
-    color: #000000;
-    font-weight: bold;
-}
+/*.event-table th {*/
+/*    background-color: #ffffff;*/
+/*    color: #000000;*/
+/*    font-weight: bold;*/
+/*}*/
 
 .event-table-header {
     background-color: #033364;
@@ -82,16 +82,72 @@ th, td {
     color: #fff;
 }
 
-td {
-    background-color: #f9f9f9;
+/*td {*/
+/*    background-color: #f9f9f9;*/
+/*}*/
+
+/*tr:nth-child(even) td {*/
+/*    background-color: #f1f1f1;*/
+/*}*/
+
+/*tr:hover td {*/
+/*    background-color: #e0e0e0;*/
+/*}*/
+
+.event-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    text-align: left;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 2%;
 }
 
-tr:nth-child(even) td {
-    background-color: #f1f1f1;
+.event-date {
+    display: flex;
+    flex-direction: column;
+    flex: 20%;
+    gap: 5%;
+    padding: 5px;
+    color: #4A6D42;
+    font-weight: bold;
 }
 
-tr:hover td {
-    background-color: #e0e0e0;
+.event-container:hover .event-date {
+    background-color: #4A6D42;
+    color: #ffffff;
+}
+
+.event-container:hover .event-details {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.event-day {
+    font-size: 2rem;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    flex: 78%;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.event-time-venu {
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+}
+
+.event-time span {
+    font-weight: bold;
+}
+.event-venu span {
+    font-weight: bold;
 }
 
 @media (max-width: 768px) {
