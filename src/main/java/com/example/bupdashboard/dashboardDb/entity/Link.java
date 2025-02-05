@@ -24,7 +24,7 @@ public class Link {
     @Column(nullable=false)
     private String url;
 
-    @ManyToMany(mappedBy="links", cascade = CascadeType.MERGE)
+    @ManyToMany(mappedBy="links", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JsonBackReference
     private Set<Category> categories =new HashSet<>();
 
